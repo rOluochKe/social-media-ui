@@ -32,7 +32,7 @@ class Signin extends Component {
     };
 
     // console.log(user);
-    signin(user).then((data) => {
+    signin(user).then(data => {
       if (data.error) {
         this.setState({ error: data.error, loading: false });
       } else {
@@ -80,7 +80,7 @@ class Signin extends Component {
 
     return (
       <div className="container">
-        <h2 className="mt-5 mb-5">Signin</h2>
+        <h2 className="mt-5 mb-5">Sign In</h2>
 
         <div
           className="alert alert-danger"

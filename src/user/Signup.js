@@ -87,7 +87,7 @@ class Signup extends Component {
 
     return (
       <div className="container">
-        <h2 className="mt-5 mb-5">Signup</h2>
+        <h2 className="mt-5 mb-5">Sign Up</h2>
 
         <div
           className="alert alert-danger"
