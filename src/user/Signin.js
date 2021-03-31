@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { signin, authenticate } from "../auth";
 
 class Signin extends Component {
@@ -32,7 +32,7 @@ class Signin extends Component {
     };
 
     // console.log(user);
-    signin(user).then(data => {
+    signin(user).then((data) => {
       if (data.error) {
         this.setState({ error: data.error, loading: false });
       } else {
@@ -98,6 +98,13 @@ class Signin extends Component {
         )}
 
         {this.signinForm(email, password)}
+
+        <p>
+          <Link to="/forgot-password" className="btn btn-raised btn-danger">
+            {" "}
+            Forgot Password
+          </Link>
+        </p>
       </div>
     );
   }
