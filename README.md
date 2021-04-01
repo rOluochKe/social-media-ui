@@ -10,6 +10,7 @@
 - Social Media Login
 - Recapture
 - Administrator
+- Roles
 
 ## Back End: Node/Express
 > View in this [REPO](https://github.com/rOluochKe/social-media-api)
