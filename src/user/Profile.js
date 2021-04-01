@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
 import { isAuthenticated } from "../auth";
+import { Redirect, Link } from "react-router-dom";
 import { read } from "./apiUser";
 import DefaultProfile from "../images/avatar.jpg";
 import DeleteUser from "./DeleteUser";
@@ -68,7 +68,6 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    // console.log("User Id params: ", this.props.match.params.userId)
     const userId = this.props.match.params.userId;
     this.init(userId);
   }
@@ -80,7 +79,6 @@ class Profile extends Component {
 
   render() {
     const { redirectToSignin, user, posts } = this.state;
-
     if (redirectToSignin) return <Redirect to="/signin" />;
 
     const photoUrl = user._id
@@ -91,7 +89,7 @@ class Profile extends Component {
 
     return (
       <div className="container">
-        <h2 className="mt-5 mb-5">User Profile</h2>
+        <h2 className="mt-5 mb-5">Profile</h2>
         <div className="row">
           <div className="col-md-4">
             <img
@@ -103,8 +101,8 @@ class Profile extends Component {
             />
           </div>
 
-          <div className="col-md-8 mt-3">
-            <div className="lead">
+          <div className="col-md-8">
+            <div className="lead mt-2">
               <p>Hello {user.name}</p>
               <p>Email: {user.email}</p>
               <p>{`Joined ${new Date(user.created).toDateString()}`}</p>
@@ -134,11 +132,32 @@ class Profile extends Component {
                 onButtonClick={this.clickFollowButton}
               />
             )}
+
+            <div>
+              {isAuthenticated().user &&
+                isAuthenticated().user.role === "admin" && (
+                  <div class="card mt-5">
+                    <div className="card-body">
+                      <h5 className="card-title">Admin</h5>
+                      <p className="mb-2 text-danger">
+                        Edit/Delete as an Admin
+                      </p>
+                      <Link
+                        className="btn btn-raised btn-success mr-5"
+                        to={`/user/edit/${user._id}`}
+                      >
+                        Edit Profile
+                      </Link>
+                      {/*<DeleteUser userId={user._id} />*/}
+                      <DeleteUser />
+                    </div>
+                  </div>
+                )}
+            </div>
           </div>
         </div>
-
         <div className="row">
-          <div className="col-md-12 mt-5 mb-5">
+          <div className="col md-12 mt-5 mb-5">
             <hr />
             <p className="lead">{user.about}</p>
             <hr />

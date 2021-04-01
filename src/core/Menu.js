@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-unused-vars */
 import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth";
@@ -19,8 +19,11 @@ const Menu = ({ history }) => (
 
       <li className="nav-item">
         <Link
-          className="nav-link"
-          style={isActive(history, "/users")}
+          className={
+            history.location.pathname === "/users"
+              ? "active nav-link"
+              : "not-active nav-link"
+          }
           to="/users"
         >
           Users
@@ -38,7 +41,7 @@ const Menu = ({ history }) => (
       </li>
 
       {!isAuthenticated() && (
-        <>
+        <React.Fragment>
           <li className="nav-item">
             <Link
               className="nav-link"
@@ -48,7 +51,6 @@ const Menu = ({ history }) => (
               Sign In
             </Link>
           </li>
-
           <li className="nav-item">
             <Link
               className="nav-link"
@@ -58,7 +60,19 @@ const Menu = ({ history }) => (
               Sign Up
             </Link>
           </li>
-        </>
+        </React.Fragment>
+      )}
+
+      {isAuthenticated() && isAuthenticated().user.role === "admin" && (
+        <li className="nav-item">
+          <Link
+            to={`/admin`}
+            style={isActive(history, `/admin`)}
+            className="nav-link"
+          >
+            Admin
+          </Link>
+        </li>
       )}
 
       {isAuthenticated() && (
@@ -72,6 +86,7 @@ const Menu = ({ history }) => (
               Find People
             </Link>
           </li>
+
           <li className="nav-item">
             <Link
               to={`/user/${isAuthenticated().user._id}`}

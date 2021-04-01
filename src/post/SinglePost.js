@@ -66,7 +66,6 @@ class SinglePost extends Component {
   deletePost = () => {
     const postId = this.props.match.params.postId;
     const token = isAuthenticated().token;
-
     remove(postId, token).then((data) => {
       if (data.error) {
         console.log(data.error);
@@ -78,7 +77,6 @@ class SinglePost extends Component {
 
   deleteConfirmed = () => {
     let answer = window.confirm("Are you sure you want to delete your post?");
-
     if (answer) {
       this.deletePost();
     }
@@ -152,7 +150,7 @@ class SinglePost extends Component {
             )}
 
           <div>
-            {/* {isAuthenticated().user && isAuthenticated().user.role === "admin" && (
+            {isAuthenticated().user && isAuthenticated().user.role === "admin" && (
               <div class="card mt-5">
                 <div className="card-body">
                   <h5 className="card-title">Admin</h5>
@@ -171,7 +169,7 @@ class SinglePost extends Component {
                   </button>
                 </div>
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>
