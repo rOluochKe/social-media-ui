@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import React, { Component } from "react";
 import { isAuthenticated } from "../auth";
 import { read, update, updateUser } from "./apiUser";

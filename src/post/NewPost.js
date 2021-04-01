@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import { isAuthenticated } from "../auth";
 import { create } from "./apiPost";
