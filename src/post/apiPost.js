@@ -14,13 +14,13 @@ export const create = (userId, token, post) => {
 };
 
 // export const list = () => {
-//   return fetch(`${process.env.REACT_APP_API_URL}/posts`, {
-//     method: "GET",
-//   })
-//     .then((response) => {
-//       return response.json();
+//     return fetch(`${process.env.REACT_APP_API_URL}/posts`, {
+//         method: "GET"
 //     })
-//     .catch((err) => console.log(err));
+//         .then(response => {
+//             return response.json();
+//         })
+//         .catch(err => console.log(err));
 // };
 
 // with pagination
